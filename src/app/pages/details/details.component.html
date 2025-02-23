@@ -1,0 +1,33 @@
+@if (productData) {
+  <section>
+    <div class="flex items-center justify-center mx-auto">
+      <div class="w-1/4 ">
+        <img class="w-100" [src]="productData.imageCover" [alt]="productData.title">
+      </div>
+      <div class="w-2/4 px-10">
+        <h2> {{productData.title}}</h2>
+        <p class="pt-2"> {{productData.description}}</p>
+        <h6 class="pt-2">{{productData.category.name}}</h6>
+    
+        <div class="flex justify-between items-center pb-10">
+          <span> {{productData.price}} EGP</span>
+          <div class="flex items-center">
+            <i class="fas fa-star text-yellow-300"></i> <span class="text-gray-500">{{productData.ratingsAverage}}</span>
+          </div>
+        </div>
+
+        <div class="flex gap-3 items-center justify-between ibtn ">
+          <button (click)="addToCart(productData._id)" class="bg-green-600 block text-white py-2 px-10 border rounded w-[100%] mx-auto "> +Add To Cart</button>
+
+         <i (click)="addToWishList(productData._id)" 
+         (click)="toggleWishList(productData._id)"
+          [class.text-red-500]="wishlist.has(productData._id)"
+         class="fa-solid fa-heart w-[15%] text-2xl"></i>
+         
+      </div>
+
+        <!-- <button (click)="addToCart(productData._id)" class="bg-green-600 block text-white py-2 px-10 border rounded w-[100%] mx-auto "> +Add To Cart</button> -->
+      </div>
+    </div>
+  </section>
+}

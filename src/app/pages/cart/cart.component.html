@@ -1,0 +1,45 @@
+@if (cartDetails.totalCartPrice) {
+    <section class=" main-style w-[75%] mx-auto bg-green-200">
+        <h1 class="text-center text-3x1 text-green-600">Shop Cart</h1>
+
+        <div class="flex items-center justify-between">
+            <span class="text-green-600">Total Cart Price : {{cartDetails.totalCartPrice | currency: 'GBP' }}</span>
+            <button (click)="clearAllCart()" class="btn-mine">Clear Cart</button>
+        </div>
+
+        
+        <!-- product -->
+        @for (prod of cartDetails.products; track prod.product.id) {
+            <div class="grid md:grid-cols-[10%minmax(0,1fr)] border-b mb-2">
+                <!-- left -->
+                <div>
+                    <img class="w-full h-[100px] object-contain" [src]="prod.product.imageCover" [alt]="prod.product.title">
+                </div>
+                <!-- right -->
+                <div class="flex justify-between items-center">
+                    <!-- data -->
+                    <div>
+                        <h3> {{prod.product.title}} </h3>
+                        <p>Price: {{prod.price | currency:'GBP'}} </p>
+                        <button (click)="removeCartItem(prod.product.id)"> <i class="fas fa-trash-can text-green-600"></i> Remove</button>
+                    </div>
+                    <!-- buttons -->
+                    <div class="flex gap-3 items-center">
+                        <button (click)="updateCount(prod.product.id , prod.count + 1 )" class="text-green-600 text-3xl"> <i class="fa-regular fa-square-plus"></i> </button>
+                        <span>{{prod.count}}</span>
+                        <button (click)="updateCount(prod.product.id , prod.count - 1 )" class="text-green-600 text-3xl"> <i class="fa-regular fa-square-minus"></i> </button>
+                    </div>
+         
+                </div>
+            </div>
+        } 
+    
+        <button class="btn-mine"
+        [routerLink]="['/checkout' , cartDetails._id]"
+        >checkout</button>
+    
+    </section>
+} 
+@else {
+    <h1 class="text-center text-3x1 text-green-600">Your Cart is Empty</h1>
+}

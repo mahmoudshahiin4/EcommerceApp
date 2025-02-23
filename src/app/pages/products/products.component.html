@@ -1,0 +1,42 @@
+<section class="pt-10">
+    <!-- <h2 class="text-4xl">Popular Products</h2>   -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+        @for (produ of products; track produ.id) {
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative" >
+                
+                <div [routerLink]="['/details' , produ._id]">
+                    <div class="card-img">
+                        <img [src]="produ.imageCover" class="w-full h-[250px] object-contain " [alt]="produ.title" />
+                    </div>
+                    <div class="card-body px-2 py-4">
+                        <h4 class="text-green-500 text-xs">{{produ.category.name}}</h4>
+                        <h3 class="font-medium">{{produ.title.split(' ', 2).join(" ")}}</h3>
+                        <div class="flex justify-between items-center">
+                            <span> {{produ.price}} EGP</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-300"></i> <span class="text-gray-700">{{produ.ratingsAverage}}</span>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                
+         
+                <div class="flex gap-3 items-center justify-between ">
+                    <button
+                    (click)="addToCart(produ.id)"
+                    class="bg-green-600 block text-white py-2 px-10 border rounded w-[75%] mx-auto " 
+                   >+Add To Cart</button>
+
+                <i (click)="toggleWishList(produ.id)"
+                    [class.text-red-500]="wishlist.has(produ.id)"
+                     (click)="addToWishList(produ.id)"
+                     class="fa-solid fa-heart w-[15%] text-2xl cursor-pointer"
+                    >
+                </i>
+                   
+                </div>
+
+            </div>
+          }
+    </div>
+</section>

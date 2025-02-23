@@ -1,0 +1,30 @@
+<section class=" main-style w-[75%] mx-auto bg-green-200">
+    <h1 class="text-center text-3x1 text-green-600">Checkout</h1>
+    <form [formGroup]="checkOutForm"  >
+    <div>
+        <label for="details" class="block mb-2 text-sm font-normal text-gray-700 dark:text-white">details:</label>
+        <textarea formControlName="details" id="details"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-600 dark:focus:border-green-600">
+            </textarea>
+    </div>
+
+    <div>
+        <label for="phone" class="block mb-2 text-sm font-normal text-gray-700 dark:text-white">phone:</label>
+        <input formControlName="phone" id="phone" type="tel"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-600 dark:focus:border-green-600">
+            
+    </div>
+
+    <div>
+        <label for="city" class="block mb-2 text-sm font-normal text-gray-700 dark:text-white">city:</label>
+        <input formControlName="city" id="city" type="text"
+            class="bg-gray-50 border border-gray-300 text-gray-700 text-sm rounded-lg focus:ring-green-600 focus:border-green-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-green-600 dark:focus:border-green-600">
+            
+    </div>
+
+    <button (click)="paymentOnline()" [disabled]="checkOutForm.invalid" class="btn-mine mt-5 mx-2" type="submit" > <i class="fa-brands fa-cc-visa"></i> Online Payment</button>
+    <button (click)="paymentCash()" class="btn-mine mt-5" type="submit" > <i class="fa-solid fa-sack-dollar"></i> Cash Payment</button>
+
+  
+    </form>
+</section>

@@ -1,0 +1,13 @@
+.card{
+    .ibtn {
+        transition: all .35s;
+       transform: translateY(100%);
+       opacity: 0;
+    }
+    &:hover{
+        .ibtn{
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

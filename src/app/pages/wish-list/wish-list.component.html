@@ -1,0 +1,40 @@
+
+<section class="pt-10">
+    <!-- <h2 class="text-4xl">Popular Products</h2>   -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 ">
+        @for (list of wishDetails; track list.id) {
+            <div class="card border border-green-400/50 rounded-md overflow-hidden shadow relative" >
+                
+                <div [routerLink]="['/details' , list.id]">
+                    <div class="card-img">
+                        <img [src]="list.imageCover" class="w-full h-[250px] object-contain " [alt]="list.title" />
+                    </div>
+                    <div class="card-body px-2 py-4">
+                        <h4 class="text-green-500 text-xs">{{list.category.name}}</h4>
+                        <h3 class="font-medium">{{list.title.split(' ', 2).join(" ")}}</h3>
+                        <div class="flex justify-between items-center">
+                            <span> {{list.price | currency: 'GBP'}} EGP</span>
+                            <div class="flex items-center">
+                                <i class="fas fa-star text-yellow-300"></i> <span class="text-gray-500">{{list.ratingsAverage}}</span>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+        
+                <div class="flex gap-3 items-center justify-between ">
+
+                    <button
+                    (click)="addToCart(list.id)"
+                    class="bg-green-600 block text-white py-2 px-10 ms-4 border rounded w-[60%]  " 
+                   >+Add To Cart</button>
+
+                    <button 
+                     (click)="removeWishItem(list.id)"
+                     class="bg-red-600 block text-white py-2 mx-4 border rounded w-[30%]"> <i class="fas fa-trash-can text-white"></i> delete</button>
+                </div>
+
+
+            </div>
+          }
+    </div>
+</section>
